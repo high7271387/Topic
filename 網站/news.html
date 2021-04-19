@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="CSS/nav.css">
+    <style>
+        body{
+            margin: 0;
+            background-color: black;
+        }
+        .container{
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr;
+            grid-template-rows: 120px 50px 1680px 50px;
+            grid-row-gap: 30px;
+        }
+        .rowtitle{
+            position: relative;
+            grid-row:2/3;
+            grid-column:2/3;
+            line-height: 50px;
+            color: white;
+            text-align: center;
+            font-size: 2rem;
+            z-index: -2;
+        }
+        .rowtitle span{
+            background: #000;
+            display: inline-block;
+            width: 180px;
+            z-index: 5;
+        }
+       .rowtitle::before{
+            content: '';
+            position: absolute;
+            border-top: 4px solid red;
+            top: 25px;
+            left:0px;
+            right: 0px;
+            z-index: -1;
+        }
+
+        .newlist{
+            grid-row:3/4;
+            grid-column: 2/3;
+        }
+        footer{
+            grid-row:4/5;
+            grid-column: 1/4;
+            background-color: rgb(69, 226, 69);
+        }
+        .newitem{
+            display: flex;
+            width:100%;
+            height: 250px;
+            background-color: rgb(207, 99, 99);
+            margin-bottom: 30px;
+        }
+        .newitem:nth-child(even){
+            flex-direction: row-reverse;
+        }
+        .newimg{
+            width:20%;
+            min-width: 180px;
+            height: 100%;
+            background: rgb(185, 207, 104);
+        }
+        .newcontent{
+            display: flex;
+            flex-direction: column;
+            width:80%;
+            height: 100%;
+        }
+        .newcontent .newtext{
+            height: 90%;
+            overflow: hidden;
+            text-overflow:ellipsis;
+            min-width:0;
+        }
+        .newcontent .buttonarea{
+            height: 10%;
+            width: 100%;
+            text-align: center;
+            margin-top:15px;
+        }
+        @media screen and (max-width:768px){
+            .container{
+                grid-template-columns: 1fr 6fr 1fr;
+            }
+        }
+        @media screen and (max-width:576px){
+            .container{
+                grid-template-rows: 60px 50px 2580px 50px;
+            }
+            .newitem{
+                height: 400px;
+                flex-direction: column;
+            }
+            .newitem:nth-child(even){
+                flex-direction: column;
+            }
+            .newimg{
+                height:50%;
+                width:100%;
+            }
+            .newcontent{
+                width:100%;
+                height: 50%;
+            }
+            .newcontent .buttonarea{
+                margin-top:10px;
+                margin-bottom: 5px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo"><a href="#"> </a></div>
+        <div class='buttonarea'>
+            <button type='button'><i class="fas fa-align-justify fa-2x"></i></button>
+        </div>
+        <div class="navlist" id='aaa'>
+            <div class="product">
+            </div>
+            <div class="news"></div>
+            <div class="about"></div>
+            <div class="address"></div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section class='rowtitle'>
+           <span>最新消息</span> 
+        </section>
+        <section class='newlist'>
+            <div class="newitem"> 
+                <div class="newimg">
+                </div>
+                <div class="newcontent">
+                    <div class="newtext">
+                        測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字
+                        測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字
+                        測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字
+                    </div>
+                    <div class="buttonarea">
+                        <button>MORE</button>
+                    </div>
+                </div>
+            </div>
+            <div class="newitem"> 
+                <div class="newimg"></div>
+                <div class="newcontent">
+                    <div class="newtext">
+                        測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字
+                        測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字
+                        測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字
+                    </div>
+                    <div class="buttonarea">
+                        <button>MORE</button>
+                    </div>
+                </div>
+            </div>
+            <div class="newitem"> 
+                <div class="newimg"></div>
+                <div class="newcontent">
+                    <div class="newtext">
+                        測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字
+                        測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字
+                        測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字
+                    </div>
+                    <div class="buttonarea">
+                        <button>MORE</button>
+                    </div>
+                </div>
+            </div>        
+            <div class="newitem"> 
+                <div class="newimg"></div>
+                <div class="newcontent">
+                    <div class="newtext">
+                        測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字
+                        測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字
+                        測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字
+                    </div>
+                    <div class="buttonarea">
+                        <button>MORE</button>
+                    </div>
+                </div>
+            </div>
+            <div class="newitem"> 
+                <div class="newimg"></div>
+                <div class="newcontent">
+                    <div class="newtext">
+                        測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字
+                        測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字
+                        測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字
+                    </div>
+                    <div class="buttonarea">
+                        <button>MORE</button>
+                    </div>
+                </div>
+            </div>
+            <div class="newitem"> 
+                <div class="newimg"></div>
+                <div class="newcontent">
+                    <div class="newtext">
+                        測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字
+                        測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字
+                        測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字
+                    </div>
+                    <div class="buttonarea">
+                        <button>MORE</button>
+                    </div>
+                </div>
+            </div>        
+    
+        </section>
+        <footer>
+    
+        </footer>
+    </div>
+
+    <script src='JS/nav.js'> </script>
+    
+
+
+
+
+
+</body>
+</html>
