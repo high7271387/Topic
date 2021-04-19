@@ -5,62 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="CSS/nav.css">
     <title>Document</title>
     <style>
         body {
             margin: 0px;
         }
 
-
-
-        #header {
-            position: absolute;
-            z-index: 99;
-            width: 100%;
-            height: 120px;
-            background-color: rgba(54, 54, 54, 0.5);
-        }
-
-        #logo {
-
-            float: left;
-            width: 250px;
-            height: 120px;
-            background-color: royalblue;
-
-        }
-
-        #logoimg {
-            width: 240px;
-            height: 120px;
-            background-color: saddlebrown;
-
-
-
-        }
-
-
-        #menu {
-            width: 75%;
-            float: left;
-            height: 120px;
-            background-color: salmon;
-
-        }
-
-        #menu ul {
-            float: right;
-            margin: 0;
-            padding: 0;
-            list-style-type: none;
-        }
-
-        #menu li {
-            float: left;
-            width: 187.5px;
-            height: 120px;
-            background-color: sandybrown;
-        }
 
         .body {
             width: 100%;
@@ -169,34 +122,19 @@
 </head>
 
 <body>
-    <div id="header">
-        <div id="logo">
-            <a href="index.html" target="_top">
-                <img src="" alt="" id="logoimg">
-
-
-            </a>
-
-
+    <nav>
+        <div class="logo"><a href="#"> </a></div>
+        <div class='buttonarea'>
+            <button type='button'><i class="fas fa-align-justify fa-2x"></i></button>
         </div>
-
-        <div id="menu">
-            <ul>
-                <li class="li1">
-                    <a href=""></a>
-                </li>
-                <li class="li2">
-                    <a href=""></a>
-                </li>
-                <li class="li3">
-                    <a href=""></a>
-                </li>
-                <li class="li4">
-                    <a href=""></a>
-                </li>
-            </ul>
+        <div class="navlist" id='aaa'>
+            <div class="product">
+            </div>
+            <div class="news"></div>
+            <div class="about"></div>
+            <div class="address"></div>
         </div>
-    </div>
+    </nav>
     <div id="banner"></div>
     <div id="body">
         <div id="content">
@@ -218,15 +156,15 @@
                 </div>
                 <div class="newscontent fright">
                     <img src="" alt="" class="fright">
-                    
+
                 </div>
                 <div class="newscontent fleft">
                     <img src="" alt="" class="">
-                    
+
                 </div>
                 <div class="newscontent fright">
                     <img src="" alt="" class="fright">
-                    
+
                 </div>
             </div>
             <img id="contentimg" src="224.jpg" alt="">
@@ -244,5 +182,7 @@
         <img src="" alt="">
     </div>
 </body>
+<script src='JS/nav.js'> </script>
+
 
 </html>
