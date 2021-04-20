@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="CSS/nav.css">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0px;
+        }
+
+        #span {
+            height: 120px;
+            background-color: #000;
+        }
+
+        #content {
+            height: 1112px;
+            width: 100%;
+            background-color: saddlebrown;
+        }
+
+        #login {
+            position: relative;
+            top: 30px;
+            left: 18.5%;
+            height: 470px;
+            width: 60.5%;
+            background-color: #000;
+            
+        }
+
+        #loginicon {
+            height: 50px;
+            background-color: #000;
+            border-bottom: 5px solid red;
+        }
+
+        #logincontent {
+
+            position: relative;
+            top: 95px;
+            /* background-color: #000; */
+            /* width: 100px; */
+            height: 320px;
+        }
+
+        #text {
+            float: left;
+            text-align: center;
+            width: 26%;
+            height: 50px;
+            color: white;
+            font-size: 50px;
+         margin-top: -7px;
+        }
+
+        .inputtext {
+            outline: none;
+           height: 50px;
+           width:68.7%;  
+           border-radius: 17px;
+           margin-bottom: 50px;
+           font-size:50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo"><a href="#"> </a></div>
+        <div class='buttonarea'>
+            <button type='button'><i class="fas fa-align-justify fa-2x"></i></button>
+        </div>
+        <div class="navlist" id='aaa'>
+            <div class="product">
+            </div>
+            <div class="news"></div>
+            <div class="about"></div>
+            <div class="address"></div>
+        </div>
+    </nav>
+    <div id="span"></div>
+    <div id="content">
+        <div id="login">
+            <div id="loginicon">會員登入</div>
+            <div id="logincontent">
+                <div id="text">帳號</div><input type="text" class="inputtext">
+                <br>
+                <div id="text">密碼</div><input type="password" class="inputtext">
+                <input type="button" value="忘記密碼"></input>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src='JS/nav.js'> </script>
+
+</html>

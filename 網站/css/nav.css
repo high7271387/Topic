@@ -20,7 +20,7 @@ nav .logo{
     grid-row: 1/1;
     grid-column: 1/2;
     /* background: #000; */
-    background: url('../S__14516227.jpg');
+    background: url('../image/Logo.jpg');
     background-size: 100% 100%;
 }
 nav .logo a{
@@ -32,7 +32,7 @@ nav  .navlist .product{
     grid-column: 2/3;
     grid-row: 1/1;
     background: rgb(242, 255, 54);
-    background: url('../product.png');
+    background: firebrick;
     background-size: 100% 100%;
 }
 nav .news{
