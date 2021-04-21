@@ -10,6 +10,5 @@ document.querySelector('.buttonarea button').addEventListener('click',e=>{
 window.addEventListener('resize',e=>{
     if(window.innerWidth>=576){
         document.querySelector('#aaa').style.height = '';
-        document.querySelector('.buttonarea button').innerHTML='開';
     }
 });
