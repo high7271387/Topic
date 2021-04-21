@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="CSS/nav.css">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0px;
+            
+        }
+        #span {
+            height: 120px;
+            background-color: #000;
+        }
+        #content{
+            width: 60.5VW;
+        }
+        #contenticon{
+            border-bottom: 0.26VW solid red;
+        }
+        @media screen and (max-width:576px) {
+            #span {
+                height: 60px;
+                background-color: #000;
+            }
+
+           
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo"><a href="#"> </a></div>
+        <div class='buttonarea'>
+            <button type='button'><i class="fas fa-align-justify fa-2x"></i></button>
+        </div>
+        <div class="navlist" id='aaa'>
+            <div class="product">
+            </div>
+            <div class="news"></div>
+            <div class="about"></div>
+            <div class="address"></div>
+        </div>
+    </nav>
+    <div id="span"></div>
+    <div id="content">
+        <div id="contenticon"> 會員中心</div>
+    </div>
+</body>
+<script src='JS/nav.js'> </script>
+
+</html>
