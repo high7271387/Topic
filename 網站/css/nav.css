@@ -20,7 +20,7 @@ nav .logo{
     grid-row: 1/1;
     grid-column: 1/2;
     /* background: #000; */
-    background: url('../S__14516227.jpg');
+    background: url('../image/Logo.jpg');
     background-size: 100% 100%;
 }
 nav .logo a{
@@ -32,7 +32,7 @@ nav  .navlist .product{
     grid-column: 2/3;
     grid-row: 1/1;
     background: rgb(242, 255, 54);
-    background: url('../product.png');
+    background: url('../image/product.png');
     background-size: 100% 100%;
 }
 nav .news{
@@ -53,9 +53,12 @@ nav .address{
 
 @media screen and (max-width:576px){
     nav{
-        grid-template-rows: 60px 60px;
+        grid-template-rows: 60px 0px;
         grid-template-columns: 25% 5fr 1fr;
         height:60px; 
+    }
+    nav.heightchange{
+        grid-template-rows: 60px 60px;
     }
     nav .logo{
         grid-row: 1/1;
@@ -78,7 +81,7 @@ nav .address{
         display: block;
         color:white;
         background-color: transparent;
-        
+
         width: 100%;
         height: 100%;
     }
