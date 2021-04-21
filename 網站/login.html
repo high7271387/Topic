@@ -21,16 +21,16 @@
         }
 
         #content {
-            height: 1112px;
+            height:100vh;
             width: 100%;
-            background-color: saddlebrown;
+            background-color: #000;
         }
 
         #login {
             position: relative;
             top: 30px;
             left: 18.5%;
-            height: 470px;
+            height: 39.5%;
             width: 60.5%;
             background-color: #000;
         }
@@ -38,71 +38,95 @@
         #loginicon {
             height: 50px;
             background-color: #000;
-            border-bottom: 5px solid red;
+            border-bottom: 0.26vw solid red;
+            color: #fff;
         }
 
         #logincontent {
             position: relative;
-            top: 95px;
+            top: 5vW;
             /* background-color: #000; */
             /* width: 100px; */
             height: 320px;
         }
-        .passwordarea{
+
+        .passwordarea {
             position: relative;
         }
-        .passwordarea a{
-            position:absolute;
+
+        .passwordarea a {
+            position: absolute;
             width: 70px;
-            top:65px;
-            right:2.4vw;
+            top: 65px;
+            right: 2.4vw;
             color: white;
             font-weight: bold;
         }
-        .passwordarea a:active{
-            color:cornsilk;
+
+        .passwordarea a:active {
+            color: cornsilk;
         }
+
         .text {
             float: left;
             text-align: center;
-            width: 26%;
+            width: 21.7%;
             height: 50px;
             color: white;
-            font-size: 50px;
-            margin-top: -7px;
+            font-size: 28px;
+            margin-top: -2px;
         }
+
         .inputtext {
-           outline: none;
-           height: 50px;
-           width:68.7%;  
-           border-radius: 17px;
-           margin-bottom: 50px;
-           font-size:50px;
+            outline: none;
+            height: 35px;
+            width: 68.7%;
+            border-radius: 17px;
+            margin-bottom: 50px;
+            font-size: 28px;
+            background: #000;
+            color: #fff;
         }
-        .formbuttonarea{
+
+        .formbuttonarea {
             text-align: center;
         }
-        .formbuttonarea button,.formbuttonarea input{
+
+        .formbuttonarea button,
+        .formbuttonarea input {
             background: none;
-            color:white;
-            padding: 15px 25px;
+            color: white;
+            padding: 0 50px;
             font-size: 1.2rem;
-            font-weight: bold;      
+            font-weight: bold;
+            border-radius: 29px;
         }
-        .formbuttonarea button:nth-child(2){
+
+        .formbuttonarea button:nth-child(2) {
             margin-left: 50px;
         }
-        @media screen  and (max-width:768px){
-            .text{
+
+        @media screen and (max-width:768px) {
+            .text {
                 line-height: 50px;
-                font-size: 30px;    
-                margin-top: 0;
+                font-size: 20px;
+                margin-top: -6px;
             }
         }
-        @media screen  and (max-width:576px){
+
+        @media screen and (max-width:576px) {
             #span {
                 height: 60px;
                 background-color: #000;
+            }
+
+            .formbuttonarea button,
+            .formbuttonarea input {
+                margin: 10px 0;
+            }
+
+            .formbuttonarea button:nth-child(2) {
+                margin-left: 0;
             }
         }
     </style>
@@ -130,16 +154,16 @@
                 <div id="loginicon">會員登入</div>
                 <div id="logincontent">
                     <div>
-                        <label for="username" class='text'>帳號</label>  
+                        <label for="username" class='text'>帳號</label>
                         <input type="text" class="inputtext" id='username' name='username'>
                     </div>
                     <div class='passwordarea'>
-                        <label for="password" class='text'>密碼</label>  
+                        <label for="password" class='text'>密碼</label>
                         <input type="password" class="inputtext" id='password' name='password'>
                         <a href="">忘記密碼</a>
                     </div>
                     <div class='formbuttonarea'>
-                        <input type="submit">登入</input>
+                        <input type="submit" value="登入"></input>
                         <button type="button">註冊</button>
                     </div>
                 </div>
@@ -148,9 +172,9 @@
     </div>
 
 </body>
-<script src='JS/nav.js'> 
-    document.querySelector('input[type="submit"]').addEventListener('click',e=>{
-        e.preventDefault(); 
+<script src='JS/nav.js'>
+    document.querySelector('input[type="submit"]').addEventListener('click', e => {
+        e.preventDefault();
     });
 
 
