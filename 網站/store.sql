@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2021-04-27 04:06:00
+-- 產生時間： 2021-04-30 02:27:55
 -- 伺服器版本： 10.4.18-MariaDB
 -- PHP 版本： 7.3.27
 
@@ -110,12 +110,45 @@ INSERT INTO `motorcycledata` (`ID`, `name`, `LWH`, `Wheelbase`, `Displacement`, 
 CREATE TABLE `motorcycleimg` (
   `id` int(11) NOT NULL,
   `color1` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `DescriptionColor1` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `color2` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `DescriptionColor2` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `color3` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `DescriptionColor3` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `color4` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `DescriptionColor4` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `color5` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `DescriptionColor5` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `banner` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `news`
+--
+
+CREATE TABLE `news` (
+  `id` int(15) NOT NULL,
+  `title` tinytext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `content` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `date` datetime NOT NULL,
+  `Thumbnail` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `contentImg` char(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `contentImg2` char(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `contentImg3` char(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- 傾印資料表的資料 `news`
+--
+
+INSERT INTO `news` (`id`, `title`, `content`, `date`, `Thumbnail`, `contentImg`, `contentImg2`, `contentImg3`) VALUES
+(1, '測試標題1', '測試內容1', '2021-04-19 15:20:32', '', '', '', ''),
+(2, '測試標題2', '測試內容2', '2021-04-22 15:22:15', '', '', '', ''),
+(3, '測試標題3', '測試內容3', '2021-04-26 15:23:06', 'image/Logo.jpg', '', '', ''),
+(4, '測試標題4', '<h5 style=\'color:red;\'>測試內容4<h5>', '2021-04-27 09:43:11', '', '', '', ''),
+(5, '測試標題5', '測試內容5', '2021-04-05 09:12:26', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -159,6 +192,12 @@ ALTER TABLE `motorcycleimg`
   ADD PRIMARY KEY (`id`);
 
 --
+-- 資料表索引 `news`
+--
+ALTER TABLE `news`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 資料表索引 `user`
 --
 ALTER TABLE `user`
@@ -173,6 +212,12 @@ ALTER TABLE `user`
 --
 ALTER TABLE `motorcycledata`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `news`
+--
+ALTER TABLE `news`
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user`
