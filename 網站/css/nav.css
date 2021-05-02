@@ -12,6 +12,7 @@ nav .navlist{
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns:  minmax(0,50%) minmax(105px,10%) minmax(105px,10%) minmax(105px,10%) minmax(105px,10%) minmax(0,10%);
+    background-color: darkgray;
 }
 nav button{
     display: none;
@@ -56,6 +57,7 @@ nav .address{
         grid-template-rows: 60px 0px;
         grid-template-columns: 25% 5fr 1fr;
         height:60px; 
+        background-color: darkgray;
     }
     nav.heightchange{
         grid-template-rows: 60px 60px;
@@ -81,7 +83,6 @@ nav .address{
         display: block;
         color:white;
         background-color: transparent;
-
         width: 100%;
         height: 100%;
     }
