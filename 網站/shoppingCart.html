@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購物車</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/fontset.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src='JS/js.cookie.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.9/vue.js' integrity='sha512-o9SZrtqlGkpa7EF+dDrNjEdRFFYhymlrBzDKpolHNolxsyx0IcXAbEm9i1e8QpoiMgEdKZVtY8XiK1t8i6jVDA==' crossorigin='anonymous'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.9.1/axios.js' integrity='sha512-Kg0CewqPNO/ziOJuCq5eyl3P/V6OLz/Lb1I2m+yKS3lHZcGVFN/KOew18rWP+kTsL7haYdaqGjwHQCZrN0heLQ==' crossorigin='anonymous'></script>
+    
+    <style>
+        body{
+            background-color: #000;
+        }
+        main{
+            display: grid;
+            grid-template-rows: 140px 60px 1fr;
+            grid-template-columns: 10vw 80vw 10vw;
+            background-color: #000;
+            padding-bottom: 40px;
+        }
+        main h1{
+            grid-row: 2/3;
+            grid-column: 2/3;
+            font-size: 1.9rem;
+            font-weight: bold;
+            color:white;
+            padding-left: 5px;
+            position: relative;
+        }
+        main h1::after{
+            content: '';
+            position: absolute;
+            border-bottom: 3px red solid;
+            width:100%;
+            left:0px;
+            bottom: 20px;
+        }
+        footer{
+            text-align: center;
+            background: #000;
+            color: white;
+        }
+        main .list{
+            position: relative;
+            grid-row:3/4;
+            grid-column: 2/3;
+        }
+        main .list .item{
+            border: 3px solid rgb(235, 235, 235);
+            border-radius: 10px ;
+            color: white;
+            padding:2vh 5vw 2vh 5vw;
+            display: flex;
+            flex-direction: row;
+            justify-content:space-around;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        main .list .item+.item{
+            margin-top: 2vh;
+        }
+        .sk-chase {
+            width: 40px;
+            height: 40px;
+            position: relative;
+            animation: sk-chase 2.5s infinite linear both;
+        }
+
+        .sk-chase-dot {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0; 
+            animation: sk-chase-dot 2.0s infinite ease-in-out both; 
+        }
+
+        .sk-chase-dot:before {
+            content: '';
+            display: block;
+            width: 25%;
+            height: 25%;
+            background-color: #fff;
+            border-radius: 100%;
+            animation: sk-chase-dot-before 2.0s infinite ease-in-out both; 
+        }
+
+        .sk-chase-dot:nth-child(1) { animation-delay: -1.1s; }
+        .sk-chase-dot:nth-child(2) { animation-delay: -1.0s; }
+        .sk-chase-dot:nth-child(3) { animation-delay: -0.9s; }
+        .sk-chase-dot:nth-child(4) { animation-delay: -0.8s; }
+        .sk-chase-dot:nth-child(5) { animation-delay: -0.7s; }
+        .sk-chase-dot:nth-child(6) { animation-delay: -0.6s; }
+        .sk-chase-dot:nth-child(1):before { animation-delay: -1.1s; }
+        .sk-chase-dot:nth-child(2):before { animation-delay: -1.0s; }
+        .sk-chase-dot:nth-child(3):before { animation-delay: -0.9s; }
+        .sk-chase-dot:nth-child(4):before { animation-delay: -0.8s; }
+        .sk-chase-dot:nth-child(5):before { animation-delay: -0.7s; }
+        .sk-chase-dot:nth-child(6):before { animation-delay: -0.6s; }
+
+        @keyframes sk-chase {
+            100% { transform: rotate(360deg); } 
+        }
+
+        @keyframes sk-chase-dot {
+            80%, 100% { transform: rotate(360deg); } 
+        }
+
+        @keyframes sk-chase-dot-before {
+            50% {
+                transform: scale(0.4); 
+            } 
+            100%, 0% {
+                transform: scale(1.0); 
+            } 
+        }
+
+        main .list .item .left{
+            width: 40%;
+            min-width: 350px;
+            /* background-color: aqua; */
+            height: 400px;
+            text-align: center;
+        }
+        main .item .left .number{
+            width:172px;
+        }
+        main .item .left .colorChoose{
+            width:180px;
+        }
+        main .list .item .right{
+            /* background:violet; */
+            height: 400px;
+            width: 50%;
+            min-width: 350px;
+        }
+        main .list .item .right p{
+            display: block;
+            margin-bottom: 10px;
+        }
+        main .list .item .right textarea{
+            resize: none;
+            width:95%;
+            height: 370px;
+            min-width: 350px;
+        }
+        main .list .item .left img{
+            width:300px; 
+            height:300px;
+        }
+        @media screen and (max-width:1017px) {
+            main .list .item .right{
+                margin-top: 20px;
+                text-align: center;
+            }
+        }
+        @media screen and (max-width:576px){
+            main .list .item .left{
+                height: 300px;
+                min-width:unset;
+                width:250px;
+            }
+            main .list .item .right{
+                height: 350px;
+                width:250px;
+            }
+            main .list .item .right p{
+                display: block;
+                margin-bottom: 5px;
+            }
+            main .list .item .right textarea{
+                height: 320px;
+                min-width:unset;
+                width:220px;
+            }
+            main .list .item .left img{
+                width:200px; 
+                height:200px;
+            }
+        }
+    </style>
+
+
+</head>
+<body>
+    <nav>
+        <div class="logo"><a href="#"> </a></div>
+        <div class='buttonarea'>
+            <button type='button'><i class="fas fa-align-justify fa-2x"></i></button>
+        </div>
+        <div class="navlist" id='aaa'>
+            <div class="product">
+            </div>
+            <div class="news"></div>
+            <div class="about"></div>
+            <div class="address"></div>
+        </div>
+    </nav>
+
+
+    <style>
+
+    </style>
+
+    <main>
+        <h1>購物車</h1>
+        <div class='list'>
+                <div v-for='(item,index,key) of resData' :key='item.key' v-show='resData' class='item'>
+                    <div class="left">
+                        <img :src="'image/'+item.id+'/'+item.colorChoose" alt="" >
+                        <h2>{{product[item.key]}}</h2>
+                        <div style="margin: 1vh 0;">
+                            單價：{{item.price}}
+                        </div>
+                        <div style="margin: 1vh 0;">
+                            <p>數量：<input type="number" min='0' v-model='number[item.key]' class='number'  @input='numberChange(product[item.key],number[item.key],item.key)'></p>
+                        </div>
+                        <div style="margin: 1vh 0;">
+                            <p>顏色：
+                                <select name="colorChoose" class='colorChoose' :value="item.colorChoose"  @input="selectHandler(item,$event.target.value)">
+                                    <option disabled value=''>請選擇</option>
+                                    <option :value='item.color1.color' :key='item.color1.DescriptionColor'>{{item.color1.DescriptionColor}}</option>
+                                    <option :value='item.color2.color' v-if='item.color2.DescriptionColor' :key='item.color2.DescriptionColor'>{{item.color2.DescriptionColor}}</option>
+                                    <option :value='item.color3.color' v-if='item.color3.DescriptionColor' :key='item.color3.DescriptionColor'>{{item.color3.DescriptionColor}}</option>
+                                    <option :value='item.color4.color' v-if='item.color4.DescriptionColor' :key='item.color4.DescriptionColor'>{{item.color4.DescriptionColor}}</option>
+                                    <option :value='item.color5.color' v-if='item.color5.DescriptionColor' :key='item.color5.DescriptionColor'>{{item.color5.DescriptionColor}}</option>
+                                </select>
+                            </p>
+                        </div>
+                        
+                    </div>
+                    <div class="right">
+                        <p>備註說明</p>
+                        <textarea name="remark" class='remark' cols="30" rows="10" v-model='item.remark'></textarea>
+                    </div>
+                </div>
+                <div v-show='resData' class='control' style="color: white;margin-top: 2vh; position:absolute; right:0;" key='control'>
+                    總計：{{sum}}元
+                    <button type="button" @click='submit'>送出訂單</button>
+                </div>
+                <div v-show='status && !resData ' class='item' key='null'>
+                    購物車裡沒有東西。
+                </div>
+                <div key='load' v-show='!status' class='item'>
+                    <div class="sk-chase" style="margin: auto;">
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                    </div>
+                </div>
+        </div>
+    </main>
+    <footer>
+        版權宣告區
+    </footer>
+
+    <script src="js/nav.js"></script>
+
+    <script>
+        let vm = new Vue({
+            el:'main',
+            data(){
+                return{
+                    status:false,
+                    cookieData:null,
+                    product:[],
+                    number:[],
+                    resData:null,
+                };
+            },
+            computed:{
+                sum(){
+                    if(this.resData){
+                        let sum = 0;
+                        for(let i in this.resData){
+                            sum += this.resData[i].price * this.number[i];
+                        }
+                        return sum.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");;
+                    }
+                },
+            },
+            created(){
+                this.cookieData = Cookies.get('shoppingCart');
+                if(this.cookieData){
+                    this.cookieData = this.cookieData.split(';');
+                    this.cookieData.forEach(e => {
+                            let index = e.indexOf('n=');
+                            let str = e.slice(0,index);
+                            let num = parseInt(e.slice(index+2));
+                            this.number.push(num*1);
+                            this.product.push(str);
+                    });
+                    axios.post('shoppingData.php',JSON.stringify(this.product))
+                         .then(res=>{
+                             this.resData = {};
+                             res.data.forEach((e,index)=>{
+                                this.$set(this.resData,index,{
+                                    id:e.mid,
+                                    name:e.name,
+                                    price:e.price,
+                                    colorChoose:'',
+                                    color1:{
+                                        color:e.color1,
+                                        DescriptionColor:e.DescriptionColor1,
+                                    },
+                                    color2:{
+                                        color:e.color2,
+                                        DescriptionColor:e.DescriptionColor2,
+                                    },
+                                    color3:{
+                                        color:e.color3,
+                                        DescriptionColor:e.DescriptionColor3,
+                                    },
+                                    color4:{
+                                        color:e.color4,
+                                        DescriptionColor:e.DescriptionColor4,
+                                    },
+                                    color5:{
+                                        color:e.color5,
+                                        DescriptionColor:e.DescriptionColor5,
+                                    },
+                                    key:index,
+                                    remark:'',
+                                });
+                                this.$set(this.resData[index],'colorChoose',this.resData[index].color1.color);
+                             });
+                             this.status = true;
+
+                            });
+                }
+                else{
+                    this.status = true;
+                }
+            },
+            methods:{
+                numberChange(product,number,key){
+                    if(Cookies.get('shoppingCart')){
+                        let oldData = Cookies.get('shoppingCart'); 
+                        let strIndex =  oldData.indexOf(`${product}`);
+                        let newDataLen  = product.length;
+                        let i;
+                        if(strIndex !== -1){
+                            for(i = strIndex+newDataLen+2;i< oldData.length;i++){
+                                if(oldData[i] === ';'){
+                                    break;
+                                }
+                            }
+                            let oldNumber = oldData.slice(strIndex+newDataLen+2,i) *1;
+                            let newData ;
+                            if(number != 0){
+                                newData = oldData.replace(`${product}n=${oldNumber}`,`${product}n=${number}`);
+                                Cookies.set('shoppingCart',newData);
+                            }
+                            else{
+                                if(oldData[strIndex+newDataLen+1]===';'){
+                                    newData =  oldData.replace(`${product}n=${oldNumber+';'}`,``);
+                                }
+                                else{
+                                    newData = oldData[strIndex-1] === ';' ?  oldData.replace(`;${product}n=${oldNumber}`,``):oldData.replace(`${product}n=${oldNumber}`,``);
+                                }
+                                delete this.resData[`${key}`];
+                                if(Object.keys(this.resData).length === 0){
+                                    this.resData = null; 
+                                }
+                                Cookies.set('shoppingCart',newData);
+                            }
+                        }
+                    }
+                },
+                selectHandler(item,event){
+                    this.$nextTick(function () {
+                        this.$set(item,'colorChoose',event);
+                    });
+                },
+                submit(){
+                    // console.log(Cookies.get('username'));
+                    if(Cookies.get('username')){
+                        if(confirm('確定要送出訂單嗎？')){
+                            console.log('送出');
+                            let Order = [];
+                            for(let i =0; i<this.number.length;i++){
+                                Order[i] = {
+                                    number:this.number[i],
+                                    product:this.product[i],
+                                    price:this.resData[i].price,
+                                    remark:this.resData[i].remark,
+                                    color:this.resData[i].colorChoose.replace('.png',''),
+                                    username:Cookies.get('username'),
+                                };
+                            }
+                            console.log(Order);
+                            axios.post('orderSet.php',JSON.stringify(Order))
+                                .then(res=>{console.log(res.data)
+                                    if(res.data!=0){
+                                        Cookies.set('shoppingCart','');
+                                        this.resData = null; 
+                                        alert(res.data);
+                                    }
+                                    else{
+                                        alert('訂單新增失敗，請稍後再試。');
+                                    }
+                                });
+                        }
+                    }
+                    else{
+                        alert('您尚未登入，請先登入會員。');
+                        location.href = 'login.html';
+                    }
+                },
+            }
+        });
+
+
+    </script>
+
+</body>
+</html>
