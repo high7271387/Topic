@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/fontset.css">
     <link rel="stylesheet" href="css/nav.css">
-    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script> 
 </head>
     <style>
         body{
@@ -17,7 +16,7 @@
         }
         main{
             display: grid;
-            grid-template-rows: 120px 60px 1fr;
+            grid-template-rows: 140px 60px 1fr;
             grid-template-columns: 20vw 60vw 20vw;
             background-color: #000;
             padding-bottom: 40px;
@@ -94,9 +93,13 @@
             font-weight: bold;
             cursor: pointer;
         }
-        main form .formItem input[type='submit']:active{
+        main form .formItem input[type='submit']:hover{
             background-color: rgb(189, 189, 189);
             color:black
+        }
+        main form .formItem input[type='submit']:active{
+            background-color: rgb(90, 90, 90);
+            color:rgb(226, 226, 226)
         }
         footer{
             text-align: center;
