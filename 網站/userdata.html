@@ -12,25 +12,110 @@
     <style>
         body {
             margin: 0px;
-            
+            background: #000;
         }
+
         #span {
             height: 120px;
             background-color: #000;
         }
-        #content{
+
+        #content {
             width: 60.5VW;
+            margin: 1vh auto 0;
         }
-        #contenticon{
+
+        #contenticon h1 {
             border-bottom: 0.26VW solid red;
+            color: white;
         }
+
         @media screen and (max-width:576px) {
             #span {
                 height: 60px;
                 background-color: #000;
             }
 
-           
+
+        }
+
+
+
+        #userdata {
+            background-color: #000;
+            border: 3px solid rgb(235, 235, 235);
+            border-radius: 10px;
+        }
+
+        #pos {
+            margin: 1vh 0 4vh 5vw;
+        }
+
+        .databox {
+            display: flex;
+            line-height: 30px;
+            font-size: 18px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .text {
+            margin-right: 2vw;
+            width: 90px;
+            height: 30px;
+            text-align: center;
+        }
+
+        #pos .databox+.databox {
+            margin-top: 5vh;
+        }
+
+        .apos {
+            margin: 0 auto 0 auto;
+        }
+
+        .databox a {
+            margin-right: 8vw;
+            text-decoration: none;
+            color: white;
+            border: 2px solid rgb(235, 235, 235);
+            border-radius: 30px;
+            padding: 10px 20px;
+            background: #000;
+
+        }
+
+        .databox a:hover {
+            background: rgb(235, 235, 235);
+            color: black;
+        }
+
+        @media screen and (max-width:756px) {
+            .databox a {
+                display: block;
+                text-align: center;
+                margin: 2vh 0 0 0 ;
+            }
+
+            .databox {
+                flex-direction: column;
+
+
+            }
+            #pos{
+                margin: 3vw;
+            }
+
+            .text {
+                border-bottom: 1px solid red;
+                margin:0 0 1vh 0;
+                
+                width: 100%;
+            }
+
+            #pos .databox+.databox {
+                margin-top: 2vh;
+            }
         }
     </style>
 </head>
@@ -51,7 +136,52 @@
     </nav>
     <div id="span"></div>
     <div id="content">
-        <div id="contenticon"> 會員中心</div>
+        <div id="contenticon">
+            <h1>會員中心</h1>
+        </div>
+        <div id="userdata">
+            <div id="pos">
+                <div class="databox">
+                    <div class="text">帳號
+                    </div>
+                    <div class="">123</div>
+
+                </div>
+                <div class="databox">
+                    <div class="text">姓名</div>
+                    <div class="">123</div>
+                </div>
+                <div class="databox">
+                    <div class="text">身分證字號</div>
+                    <div class="">123</div>
+                </div>
+
+                <div class="databox">
+                    <div class="text">手機號碼</div>
+                    <div class="">123</div>
+                </div>
+                <div class="databox">
+                    <div class="text">電子信箱</div>
+                    <div class="">aaasdsadasd@asfwffwfwqfqwfwqfwq</div>
+                </div>
+                <div class="databox">
+                    <div class="text">註冊時間</div>
+                    <div class="">123</div>
+                </div>
+                <div class="databox">
+                    <div class="text">地址</div>
+                    <div class="">1地址地址地址地址地址地址地址地址地址地址地址地址</div>
+                </div>
+                <div class="databox">
+                    <div class="apos">
+                        <a href="">個人資料修改</a>
+                        <a href="">購物車查詢</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 </body>
 <script src='JS/nav.js'> </script>
