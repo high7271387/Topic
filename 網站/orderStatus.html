@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>訂單查詢</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/fontset.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <!-- <script src='JS/js.cookie.min.js'></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.9/vue.js' integrity='sha512-o9SZrtqlGkpa7EF+dDrNjEdRFFYhymlrBzDKpolHNolxsyx0IcXAbEm9i1e8QpoiMgEdKZVtY8XiK1t8i6jVDA==' crossorigin='anonymous'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.9.1/axios.js' integrity='sha512-Kg0CewqPNO/ziOJuCq5eyl3P/V6OLz/Lb1I2m+yKS3lHZcGVFN/KOew18rWP+kTsL7haYdaqGjwHQCZrN0heLQ==' crossorigin='anonymous'></script>
+
+</head>
+    <style>
+        body{
+            background-color: black;
+        }
+        main{
+            display: grid;
+            grid-template-rows: 140px 60px 1fr;
+            grid-template-columns: 20vw 60vw 20vw;
+            background-color: #000;
+            padding-bottom: 40px;
+            color:#fff;
+        }
+        main h1{
+            grid-row: 2/3;
+            grid-column: 2/3;
+            font-size: 1.9rem;
+            font-weight: bold;
+            color:white;
+            padding-left: 5px;
+            position: relative;
+        }
+        main h1::after{
+            content: '';
+            position: absolute;
+            border-bottom: 3px red solid;
+            width:100%;
+            left:0px;
+            bottom: 20px;
+        }
+        main #mainContent{
+            border: 3px solid rgb(235, 235, 235);
+            border-radius: 10px ;
+            grid-row: 3/4;
+            grid-column: 2/3;
+            padding:2vh 5vw 4vh 5vw;
+            min-height: 600px;
+            position: relative;
+        }
+        main #mainContent h2{
+            color: white;
+            font-size: 24px;
+            margin-bottom: 2.5vh;
+            font-weight: bold;
+            position: relative;
+        }
+        main #mainContent h2::after{
+            content: '';
+            position: absolute;
+            border-bottom: 3px red solid;
+            width:95%;
+            left:0px;
+            bottom: -10px;
+        }
+        main #mainContent .formItem {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        main #mainContent .formItem + .formItem{
+            margin-top: 1.5vh;
+        }
+        main #mainContent .formItem label{
+            font-size: 18px;
+            line-height: 30px;
+            height: 30px;
+            color:white;
+            font-weight: bold;
+            margin-right: 2vw;
+            width:100%;
+            text-align: center;
+        }
+        main #mainContent .formItem input{
+            border: 2px solid rgb(235, 235, 235) ;
+            border-radius: 30px;
+            background-color: black;
+            height: 20px;
+            color: white;
+            width: 100%;
+            max-width: 100%;
+            font-size: 15px;
+        }
+        main #mainContent .formItem input[type='date']::-webkit-calendar-picker-indicator{
+            background-color: white;
+        }
+        main #mainContent .formItem input:focus{
+            outline: none;
+        }
+        #search{
+            margin-top: 30px;
+            padding:5px 30px 5px 30px;
+            background-color: transparent;
+            border:1px solid whitesmoke;
+            border-radius: 15px;
+            color: white;
+            position: relative;
+            left:50%;
+            transform: translateX(-50%);
+            font-size: 18px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all .4s;
+            margin-bottom: 20px;
+        }
+        #search:hover{
+            background-color: whitesmoke;
+            color: black;
+        }
+        #search:active{
+            background-color: rgb(128, 128, 128);
+        }
+        #date2{
+            margin-top: 30px;
+        }
+        table{
+            width: 100%;
+            border:1px solid white;
+        }
+        table tr:nth-child(even){
+            background-color: cornsilk;
+            color: black;
+        }
+        table tr td{
+            border:1px solid white !important;
+            vertical-align:middle;
+            text-align: center;
+            word-wrap:break-word; 
+            word-break:break-all;
+            padding: 0.4rem 0.2rem;
+        }                
+        footer{
+            text-align: center;
+            background: #000;
+            color: white;
+        }
+        .sk-chase {
+            width: 40px;
+            height: 40px;
+            position: relative;
+            animation: sk-chase 2.5s infinite linear both;
+        }
+
+        .sk-chase-dot {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0; 
+            animation: sk-chase-dot 2.0s infinite ease-in-out both; 
+        }
+
+        .sk-chase-dot:before {
+            content: '';
+            display: block;
+            width: 25%;
+            height: 25%;
+            background-color: #fff;
+            border-radius: 100%;
+            animation: sk-chase-dot-before 2.0s infinite ease-in-out both; 
+        }
+
+        .sk-chase-dot:nth-child(1) { animation-delay: -1.1s; }
+        .sk-chase-dot:nth-child(2) { animation-delay: -1.0s; }
+        .sk-chase-dot:nth-child(3) { animation-delay: -0.9s; }
+        .sk-chase-dot:nth-child(4) { animation-delay: -0.8s; }
+        .sk-chase-dot:nth-child(5) { animation-delay: -0.7s; }
+        .sk-chase-dot:nth-child(6) { animation-delay: -0.6s; }
+        .sk-chase-dot:nth-child(1):before { animation-delay: -1.1s; }
+        .sk-chase-dot:nth-child(2):before { animation-delay: -1.0s; }
+        .sk-chase-dot:nth-child(3):before { animation-delay: -0.9s; }
+        .sk-chase-dot:nth-child(4):before { animation-delay: -0.8s; }
+        .sk-chase-dot:nth-child(5):before { animation-delay: -0.7s; }
+        .sk-chase-dot:nth-child(6):before { animation-delay: -0.6s; }
+
+        @keyframes sk-chase {
+            100% { transform: rotate(360deg); } 
+        }
+
+        @keyframes sk-chase-dot {
+            80%, 100% { transform: rotate(360deg); } 
+        }
+
+        @keyframes sk-chase-dot-before {
+            50% {
+                transform: scale(0.4); 
+            } 
+            100%, 0% {
+                transform: scale(1.0); 
+            } 
+        }
+        .Data-enter-active{
+            position: relative;
+            left:-60px;
+            opacity: 0;
+            transition: all 0.8s;
+        }
+        .Data-enter-to{
+            left:0px;
+            opacity: 1;
+        }
+        @media screen and (max-width:710px){
+            main{
+                grid-template-columns: 10vw 80vw 10vw ;
+            }
+        }
+        @media screen and (max-width:576px){
+            thead{
+                display: none;
+            }
+            table tr td{
+                display: block;
+                padding: .3rem .5rem;
+                text-align: left;
+            }
+            table tr td:before{
+                content: attr(data-title);
+                display: inline-block;
+                width: auto;
+                min-width: 20%;
+                font-weight: 900;
+                padding-right: 1rem;
+            }
+            table tr td:nth-child(even){
+                border:1px solid black !important;
+            }
+        }
+    </style>
+<body>
+    <nav>
+        <div class="logo"><a href="#"> </a></div>
+        <div class='buttonarea'>
+            <button type='button'><i class="fas fa-align-justify fa-2x"></i></button>
+        </div>
+        <div class="navlist" id='aaa'>
+            <div class="product">
+            </div>
+            <div class="news"></div>
+            <div class="about"></div>
+            <div class="address"></div>
+        </div>
+    </nav>
+    <style>
+
+    </style>
+    <main>
+        <h1>訂單查詢</h1>
+        <div id='mainContent'>
+                    <div v-if="userdata && status" key='block-a' style="margin-bottom: 1vh;">
+                        <div class='formItem'>
+                            <label for="date" >日期</label>
+                            <input type="date" name="date" id='date' v-model='selectDate'>
+                            <input type="date" name="date2" id='date2' v-model='selectDate2'>
+                        </div>
+                        <div class='formItem'>
+                            <label for="Number">訂單編號</label>
+                            <input type="text" name="Number" id='Number' @keyup.enter='NumberCheck' v-model='InputData'>
+                        </div>
+                        <button @click='search' id='search'>查詢</button>
+                    </div>
+                    <div v-if='!status || searching' key='block-b'>
+                        <div class="sk-chase" style="margin: auto;">
+                            <div class="sk-chase-dot"></div>
+                            <div class="sk-chase-dot"></div>
+                            <div class="sk-chase-dot"></div>
+                            <div class="sk-chase-dot"></div>
+                            <div class="sk-chase-dot"></div>
+                            <div class="sk-chase-dot"></div>
+                        </div>
+                    </div>
+                    <div v-if="!userdata && status " style="color: #fff; text-align: center; font-size: 1.6rem; margin-bottom: -2vh;" key='block-c'>
+                        未找到對應的資料，請重新登入後再作嘗試。
+                    </div>
+                    <transition-group name='Data'>
+                        <div v-if='InquireData && OrderData && !searching' key='block-d' >
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>訂單編號</td>
+                                        <td>商品名稱</td>
+                                        <td>商品顏色</td>
+                                        <td>訂單金額</td>
+                                        <td>下單時間</td>
+                                        <td>狀態</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for='item of OrderData' :key='OrderData.tracking_number'>
+                                        <td data-title='訂單編號'>{{item.tracking_number}}</td>
+                                        <td data-title='商品名稱'>{{strReplace(item.p_name)}}</td>
+                                        <td data-title='商品顏色'>{{strReplace(item.p_color)}}</td>
+                                        <td data-title='訂單金額'>{{priceSum(item.p_price)}}</td>
+                                        <td data-title='下單時間'>{{item.date}}</td>
+                                        <td data-title='狀態'>{{item.status}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </transition-group>
+                    <div v-if="InquireData && !OrderData && !searching" style="text-align: center; font-size: 1.6rem; margin-bottom: -2vh;" key='block-e'>
+                        未找到訂單資料，請確定您輸入的資料是否正確。
+                    </div>
+        </div>
+    </main>
+
+
+    <footer>
+        版權宣告區
+    </footer>
+
+    <script src='js/nav.js'></script>
+    <script>
+        let Rules = /\d{13}/;
+        let vm = new Vue({
+            el:'main',
+            data(){
+                return {
+                    status:false,
+                    cookiesData:null,
+                    userdata:null,
+                    OrderData:null,
+                    InquireData:false,
+                    InputData:'',
+                    selectDate:'',
+                    selectDate2:'',
+                    searching:false,
+                };
+            },      
+            created(){
+                this.cookiesData = Cookies.get('username');
+                if(this.cookiesData){
+                    axios.post('userCheck.php', JSON.stringify(this.cookiesData))
+                    .then(res=>{
+                        if(res.data){
+                            this.userdata = true;
+                            Object.freeze(this.cookiesData);
+                        }
+                        this.status = true;                        
+                    })
+                    .catch((error) => { console.error(error) });
+                }
+                else{
+                    this.$nextTick(function(){
+                        this.status = true;
+                    });
+                }
+            },
+            methods:{
+                
+                strReplace(str){
+                    return str.replace(',','、');
+                },
+                priceSum(str){
+                    return str.split(',').reduce( (prev, curr) => prev*1 + curr*1,0);
+                },
+
+                search(){
+                    if(this.InputData!=''){
+                        if(!Rules.test(this.InputData)){
+                            alert('編號輸入格式有誤，請輸入13位數數字。');
+                            return;
+                        }
+                    }
+                    this.searching = true;
+                    axios.post('Order.php', JSON.stringify({
+                        username:this.cookiesData,
+                        date1:this.selectDate,
+                        date2:this.selectDate2,
+                        number:this.InputData,
+                    }))
+                        .then(res => {
+                            this.OrderData = res.data;
+                            this.InquireData =true;
+                            this.searching = false;
+                        });
+                },
+            }
+        });
+    </script>
+
+</body>
+</html>
