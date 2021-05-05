@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/fontset.css">
     <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <!-- <script src='JS/js.cookie.min.js'></script> -->
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.9/vue.js' integrity='sha512-o9SZrtqlGkpa7EF+dDrNjEdRFFYhymlrBzDKpolHNolxsyx0IcXAbEm9i1e8QpoiMgEdKZVtY8XiK1t8i6jVDA==' crossorigin='anonymous'></script>
@@ -71,9 +72,6 @@
             display: flex;
             flex-wrap: wrap;
         }
-        main #mainContent .formItem + .formItem{
-            margin-top: 1.5vh;
-        }
         main #mainContent .formItem label{
             font-size: 18px;
             line-height: 30px;
@@ -83,6 +81,9 @@
             margin-right: 2vw;
             width:100%;
             text-align: center;
+        }
+        main #mainContent .formItem #date,#date2{
+            margin-bottom: 15px;
         }
         main #mainContent .formItem input{
             border: 2px solid rgb(235, 235, 235) ;
@@ -122,9 +123,6 @@
         }
         #search:active{
             background-color: rgb(128, 128, 128);
-        }
-        #date2{
-            margin-top: 30px;
         }
         table{
             width: 100%;
@@ -236,6 +234,7 @@
             }
             table tr td:nth-child(even){
                 border:1px solid black !important;
+                
             }
         }
     </style>
@@ -261,8 +260,9 @@
         <div id='mainContent'>
                     <div v-if="userdata && status" key='block-a' style="margin-bottom: 1vh;">
                         <div class='formItem'>
-                            <label for="date" >日期</label>
+                            <label for="date" >日期(何日以後的訂單)</label>
                             <input type="date" name="date" id='date' v-model='selectDate'>
+                            <label for="date2" >日期(何日以前的訂單)</label>
                             <input type="date" name="date2" id='date2' v-model='selectDate2'>
                         </div>
                         <div class='formItem'>
