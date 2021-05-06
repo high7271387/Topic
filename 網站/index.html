@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="CSS/nav.css">
@@ -34,9 +35,9 @@
 
 
         #news {
-            width: 55%;
+            width: 74%;
             height: 1050px;
-            background-color: brown;
+            
             position: relative;
             top: 20px;
             left: 13%;
@@ -46,32 +47,24 @@
         #newstitle {
             width: 100%;
             height: 50px;
-            background-color: blueviolet;
+            
             border-bottom: 5px solid red;
             position: relative;
         }
 
         .newscontent {
             margin-top: 50px;
-            background-color: burlywood;
+            
             width: 100%;
             height: 200px;
 
 
         }
 
-        .fleft {
-            float: left;
-        }
-
-        .fright {
-            float: right
-        }
-
         .newscontent img {
-            width: 300px;
+            width: 250px;
             height: 200px;
-            background-color: cadetblue;
+            
         }
 
         #newstitle span {
@@ -85,16 +78,67 @@
             margin-top: 170px;
         }
 
-        nav .navlist{
-            background-color:rgba(0, 0, 0, 0.2);
+        nav .navlist {
+            background-color: rgba(0, 0, 0, 0.2);
         }
-        *{
-            box-sizing:inherit;
+
+        .newscontent a {
+            width: 100%;
+            height: 100%;
+        }
+
+        .newscontent img+div {
+            width: calc(100% - 250px);
+            
+            height: 200px;
+        }
+
+        .newscontent  button {
+            display: flex;
+            padding: 5px 25px;
+            background: #000;
+            color: white;
+            box-sizing: border-box;
+            border: 2px solid rgb(235, 235, 235);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration:none;
+        }
+
+        .newscontent .float-start>div {
+            color: white;
+        }
+
+        .newscontent .float-start button:hover {
+            background-color: rgb(189, 189, 189);
+            color: black
+        }
+
+
+        .newscontent .float-start div div {
+            display: flex;
+            width: 100%;
+            height: 75%;
+            
+        }
+
+        @media screen and (max-width:576px) {
+            nav {
+                background-color: rgba(0, 0, 0, 0.2);
+            }
+            .newscontent img+div{
+                width:100%;
+           
+            }
+            .newscontent img{
+                width: 100%;
+            }
+            #news .newscontent~.newscontent{
+                margin-top: 200px;
+            }
 
         }
-        
-
-       
     </style>
 </head>
 
@@ -107,37 +151,42 @@
         <div class="navlist" id='listItem'>
             <div class="product"> <a href="productList.html"></a> </div>
             <div class="news"> <a href="news.html"></a> </div>
-            <div class="about"> <a href="about.html"></a></div>
             <div class="member"><a href="userdata.html"></a></div>
+            <div class="about"> <a href="about.html"></a></div>
         </div>
     </nav>
     <div class="container-fluid px-0">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="image/banner1.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="image/banner2.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="image/banner3.jpg" class="d-block w-100" alt="...">
-              </div>
+                <div class="carousel-item active">
+                    <img src="image/banner1.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="image/banner2.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="image/banner3.jpg" class="d-block w-100" alt="...">
+                </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
             </button>
-          </div>
+        </div>
     </div>
     <div id="body">
         <div id="content">
@@ -146,32 +195,60 @@
                     <span> 最新消息</span>
 
                 </div>
-                <div class="newscontent fleft">
-                    <a href="">
+                <div class="newscontent float-start ">
+                    <a href="" class="float-start ">
                         <img src="" alt="" class="">
-                        <div class="">
+                        <div class="float-end ">
                             <div>
-
+                                文字
                             </div>
+                            <button class="mx-auto mt-1">MORE</button>
                         </div>
 
                     </a>
                 </div>
-                <div class="newscontent fright">
-                    <img src="" alt="" class="fright">
+                <div class="newscontent float-end">
+
+                    <a href="" class="float-start">
+                        <img src="" alt="" class="float-end">
+                        <div class="">
+                            <div>
+                                文字
+                            </div>
+                            <button class="mx-auto mt-1">MORE</button>
+                        </div>
+
+                    </a>
+                </div>
+                <div class="newscontent float-start">
+                    <a href="" class="float-start">
+                        <img src="" alt="" class="">
+                        <div class="float-end ">
+                            <div>
+                                文字
+                            </div>
+                            <button class="mx-auto mt-1">MORE</button>
+                        </div>
+
+                    </a>
 
                 </div>
-                <div class="newscontent fleft">
-                    <img src="" alt="" class="">
+                <div class="newscontent float-end">
+                    <a href="" class="float-start">
+                        <img src="" alt="" class="float-end">
+                        <div class=" ">
+                            <div>
+                                文字
+                            </div>
+                            <button class="mx-auto mt-1">MORE</button>
+                        </div>
 
-                </div>
-                <div class="newscontent fright">
-                    <img src="" alt="" class="fright">
+                    </a>
 
                 </div>
             </div>
             <a href=""><img id="contentimg" src="image/banner4.jpg" alt=""></a>
-            
+
 
         </div>
 
@@ -181,17 +258,26 @@
     </footer>
 </body>
 <script src='JS/nav.js'> </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+    crossorigin="anonymous"></script>
 <script>
-    window.onscroll = function() {
+    window.onscroll = function () {
         if (document.documentElement.scrollTop >= 100) {
             document.querySelector(".navlist").style.background = "rgba(0, 0, 0, 1)"
+            if (document.body.clientWidth < 576) {
+                document.querySelector("nav").style.background = "rgba(0, 0, 0, 1)"
+            }
         }
         if (document.documentElement.scrollTop < 100) {
             document.querySelector(".navlist").style.background = "rgba(0, 0, 0, 0.2)"
-
+            if (document.body.clientWidth < 576) {
+                document.querySelector("nav").style.background = "rgba(0, 0, 0, 0.2)"
+            }
         }
     }
-    
+
+
 </script>
+
 </html>
