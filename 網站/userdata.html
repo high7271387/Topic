@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="CSS/nav.css">
+    <link rel="stylesheet" href="CSS/footer.css">
     <script src='JS/js.cookie.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.9.1/axios.js' integrity='sha512-Kg0CewqPNO/ziOJuCq5eyl3P/V6OLz/Lb1I2m+yKS3lHZcGVFN/KOew18rWP+kTsL7haYdaqGjwHQCZrN0heLQ==' crossorigin='anonymous'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.9/vue.js' integrity='sha512-o9SZrtqlGkpa7EF+dDrNjEdRFFYhymlrBzDKpolHNolxsyx0IcXAbEm9i1e8QpoiMgEdKZVtY8XiK1t8i6jVDA==' crossorigin='anonymous'></script>
@@ -94,7 +95,6 @@
 
 
         .databox a,#content .error a {
-            margin-right: 4vw;
             text-decoration: none;
             color: white;
             border: 2px solid rgb(235, 235, 235);
@@ -186,26 +186,46 @@
                 margin:0 0 1vh 0;
                 width: 100%;
             }
-
             #pos .databox+.databox {
                 margin-top: 2vh;
             }
         }
+        @media screen and (max-width:631px) {
+            #content #userdata .error {
+                font-size: 1.4rem;
+            }
+        }
+        @media screen and (max-width:576px) {
+            #content #userdata .error {
+                font-size: 1.1rem;
+            }
+            #content .error a {
+                padding: 5px 10px;
+            }
+        }
+        @media screen and (max-width:450px) {
+            #content #userdata .error {
+                font-size: 0.9rem;
+            }
+            #content .error a {
+                padding: 5px 5px;
+            }
+        }
+
     </style>
 </head>
 
 <body>
     <nav>
-        <div class="logo"><a href="#"> </a></div>
+        <div class="logo"><a href="index.html"> </a></div>
         <div class='buttonarea'>
             <button type='button'><i class="fas fa-align-justify fa-2x"></i></button>
         </div>
-        <div class="navlist" id='aaa'>
-            <div class="product">
-            </div>
-            <div class="news"></div>
-            <div class="about"></div>
-            <div class="address"></div>
+        <div class="navlist" id='listItem' >
+            <div class="product"> <a href="productList.html"></a> </div>
+            <div class="news"> <a href="news.html"></a> </div>
+            <div class="about"> <a href="about.html"></a></div>
+            <div class="member"><a href="userdata.html"></a></div>
         </div>
     </nav>
     <div id="span"></div>
@@ -269,8 +289,10 @@
                 <a href="login.html">前往登入頁面</a>
             </div>
         </div>
-
     </div>
+    <footer>
+        Copyright © 2021 109年電子商務網站建置(臺中)第2期第八組. All rights reserved.
+    </footer>
 </body>
 <script src='JS/nav.js'> </script>
 <script>
