@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/fontset.css">
     <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="CSS/footer.css">
     <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script> 
 </head>
     <style>
@@ -89,17 +90,16 @@
         }
     </style>
 <body>
-    <nav>
-        <div class="logo"><a href="#"> </a></div>
+<nav>
+        <div class="logo"><a href="index.html"> </a></div>
         <div class='buttonarea'>
             <button type='button'><i class="fas fa-align-justify fa-2x"></i></button>
         </div>
-        <div class="navlist" id='aaa'>
-            <div class="product">
-            </div>
-            <div class="news"></div>
-            <div class="about"></div>
-            <div class="address"></div>
+        <div class="navlist" id='listItem'>
+            <div class="product"> <a href="productList.html"></a> </div>
+            <div class="news"> <a href="news.html"></a> </div>
+            <div class="about"> <a href="about.html"></a></div>
+            <div class="member"><a href="userdata.html"></a></div>
         </div>
     </nav>
 
@@ -116,7 +116,7 @@
     </main>
 
     <footer>
-        版權宣告區
+        Copyright © 2021 109年電子商務網站建置(臺中)第2期第八組. All rights reserved.
     </footer>
 
     <script src='js/nav.js'></script>
