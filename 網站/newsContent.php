@@ -131,6 +131,9 @@
     </footer>
 
     <script src='js/nav.js'></script>
+    <script>
+        document.title = "<?php echo $title;?>";
+    </script>
 
 </body>
 </html>
