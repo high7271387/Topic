@@ -13,7 +13,7 @@ nav .navlist{
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns:  minmax(0,50%) minmax(105px,10%) minmax(105px,10%) minmax(105px,10%) minmax(105px,10%) minmax(0,10%);
-    background-color: darkgray;
+    background-color: black;
 }
 nav button{
     display: none;
