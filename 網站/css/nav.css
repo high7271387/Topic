@@ -119,15 +119,16 @@ nav .navlist .about:hover{
         grid-row: 1/1;
         /* background-color: darkgray; */
     }
-    nav .about{
-        grid-column: 4/5;
-        grid-row: 1/1;
-        /* background-color: darkgray; */
-    }        
     nav .member{
         grid-column: 3/4;
         grid-row: 1/1;
         /* background-color: darkgray; */
     }
+    nav .about{
+        grid-column: 4/5;
+        grid-row: 1/1;
+        /* background-color: darkgray; */
+    }        
+    
 
 }
