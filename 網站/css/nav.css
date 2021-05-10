@@ -48,7 +48,7 @@ nav .member{
     background: url('../image/login.svg');
     background-size: 100% 100%;
 }
-nav .about{
+nav .cart{
     grid-column: 5/6;
     grid-row: 1/1;
     background: url('../image/cart.svg');
@@ -69,7 +69,7 @@ nav .navlist .product:hover{
 nav .navlist .member:hover{
     background-image: url('../image/login2.svg');
 }
-nav .navlist .about:hover{
+nav .navlist .cart:hover{
     background-image: url('../image/cart2.svg');
 }
 
@@ -124,7 +124,7 @@ nav .navlist .about:hover{
         grid-row: 1/1;
         /* background-color: darkgray; */
     }
-    nav .about{
+    nav .cart{
         grid-column: 4/5;
         grid-row: 1/1;
         /* background-color: darkgray; */

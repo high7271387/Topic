@@ -110,10 +110,10 @@
             <button type='button'><i class="fas fa-align-justify fa-2x"></i></button>
         </div>
         <div class="navlist" id='aaa'>
-            <div class="product">
+            <div class="product"><a href="productList.html"></a>
             </div>
-            <div class="news"></div>
-            <div class="about"></div>
+            <div class="news"><a href="news.html"></a></div>
+            <div class="cart"><a href="shoppingCart.html"></a></div>
             <div class="address"></div>
         </div>
     </nav>

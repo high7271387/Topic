@@ -192,7 +192,7 @@ if (isset($_REQUEST['oldPassword'])) {
         <div class="navlist" id='listItem'>
             <div class="product"> <a href="productList.html"></a> </div>
             <div class="news"> <a href="news.html"></a> </div>
-            <div class="about"> <a href="about.html"></a></div>
+            <div class="cart"> <a href="shoppingCart.html"></a></div>
             <div class="member"><a href="userdata.html"></a></div>
         </div>
     </nav>
