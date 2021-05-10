@@ -104,16 +104,16 @@
         }
     </style>
 <body>
-    <nav>
+<nav>
         <div class="logo"><a href="index.html"> </a></div>
         <div class='buttonarea'>
             <button type='button'><i class="fas fa-align-justify fa-2x"></i></button>
         </div>
-        <div class="navlist" id='listItem' >
+        <div class="navlist" id='listItem'>
             <div class="product"> <a href="productList.html"></a> </div>
             <div class="news"> <a href="news.html"></a> </div>
-            <div class="about"> <a href="about.html"></a></div>
             <div class="member"><a href="userdata.html"></a></div>
+            <div class="about"> <a href="shoppingCart.html"></a></div>
         </div>
     </nav>
 
