@@ -45,7 +45,7 @@ nav .news{
 nav .member{
     grid-column: 4/5;
     grid-row: 1/1;
-    background: url('../image/login.svg');
+    background: url('../image/member.svg');
     background-size: 100% 100%;
 }
 nav .cart{
@@ -67,7 +67,7 @@ nav .navlist .product:hover{
     background-image: url('../image/product2.svg');
 }
 nav .navlist .member:hover{
-    background-image: url('../image/login2.svg');
+    background-image: url('../image/member2.svg');
 }
 nav .navlist .cart:hover{
     background-image: url('../image/cart2.svg');
