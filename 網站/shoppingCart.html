@@ -385,7 +385,6 @@
                     // console.log(Cookies.get('username'));
                     if(Cookies.get('username')){
                         if(confirm('確定要送出訂單嗎？')){
-                            console.log('送出');
                             let Order = [];
                             for(let i =0; i<this.number.length;i++){
                                 Order[i] = {
@@ -397,9 +396,8 @@
                                     username:Cookies.get('username'),
                                 };
                             }
-                            console.log(Order);
                             axios.post('orderSet.php',JSON.stringify(Order))
-                                .then(res=>{console.log(res.data)
+                                .then(res=>{
                                     if(res.data!=0){
                                         Cookies.set('shoppingCart','');
                                         this.resData = null; 
