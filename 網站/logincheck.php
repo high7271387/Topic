@@ -194,7 +194,7 @@
     </main>
 
     <footer>
-        版權宣告區
+        Copyright © 2021 109年電子商務網站建置(臺中)第2期第八組. All rights reserved.
     </footer>
 
     <script src='js/nav.js'></script>
