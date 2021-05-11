@@ -21,11 +21,52 @@
         }
 
 
+        #banner{
+            background: #000;
+            display: flex;
+            max-height: 1030px;
+            width:100%;
+            position: relative;
+            overflow: hidden;
+        }
+        #banner button{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 72px;
+            cursor: pointer;
+            transition: background 0.4s;
+        }
+        #banner button:hover{
+            background-color: rgba(192, 192, 192, 0.41);
+        }
+        #banner button:nth-child(1){
+            right:0;
+        }
+        #banner button:nth-child(2){
+            left:0;
+        }
+        #banner .imgContainer span{
+            display: flex;
+            flex-wrap: nowrap;
+            margin-left: -100vw;
+        }
+        #banner .imgContainer .imgList{
+            width: 100vw;
+        }
 
-        #banner {
-            width: 100%;
-            height: 1030px;
-            background-color: black;
+        #banner .imgContainer .imgList:last-child{
+            Visibility:hidden;
+        }
+        #banner .imgContainer .imgList img{
+            max-width: 100%;
+            height: auto;
+        }
+        .bannerChange-move{
+            transition: all 0.7s;
         }
 
         #content {
@@ -157,39 +198,21 @@
             <div class="cart"> <a href="shoppingCart.html"></a></div>
         </div>
     </nav>
-    <div class="container-fluid px-0">
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="image/banner1.jpg" class="d-block w-100" alt="...">
+
+    <header id='banner'>
+        <button @click='imgChange(now+1)'><i class="fas fa-chevron-right"></i></button>
+        <button @click='imgChange(now-1)'><i class="fas fa-chevron-left"></i></button>
+        <div class="imgContainer">
+            <transition-group name='bannerChange'>
+                <div class="imgList" v-for='item of showimg' :key='item.id'>
+                    <a :href="item.href">
+                        <img :src="item.src" alt="">
+                    </a>
                 </div>
-                <div class="carousel-item">
-                    <img src="image/banner2.jpg" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="image/banner3.jpg" class="d-block w-100" alt="...">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+            </transition-group>
         </div>
-    </div>
+    </header>
+
     <div id="body">
         <div id="content">
             <div id="news">
@@ -220,9 +243,6 @@
     </footer>
 </body>
 <script src='JS/nav.js'> </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
-    crossorigin="anonymous"></script>
 <script>
     window.onscroll = function () {
         if (document.documentElement.scrollTop >= 100) {
@@ -254,7 +274,6 @@
             },
             methods:{
                 classchange(index){
-                    console.log(index);
                     if(index%2 ==0){
                         return 'float-start';
                     }
@@ -263,10 +282,52 @@
                     }
                 }
             }
-
-
         });
 
+    let banner = new Vue({
+        el:'#banner',
+        data(){
+            return{
+                now:0,
+                imgs:[{id:1,src:'image/banner1.jpg',href:'product.html?id=34'},
+                {id:2,src:'image/banner2.jpg',href:'product.html?id=7'},
+                {id:3,src:'image/banner3.jpg',href:'product.html?id=35'}],
+                time:null,
+            }
+        },
+        mounted(){
+            this.time = setTimeout(()=>{
+                this.now++;
+                this.imgChange(this.now);
+            },4000);
+        },
+        computed:{
+            Allimages(){
+                let ary = [];
+                let total = this.imgs.length;
+                while(ary.length < 5){
+                    let key = ary.length / total;
+                    for(let  i = 0;i<total;i++){
+                        ary.push({id:key+'-'+this.imgs[i].id, src:this.imgs[i].src,href:this.imgs[i].href});
+                    }
+                }
+                return ary;
+            },
+            showimg(){
+                return this.Allimages.slice(this.now).concat(this.Allimages.slice(0,this.now));
+            }
+        },
+        methods:{
+            imgChange(index){
+                clearTimeout(this.time);
+                this.now =   index > this.Allimages.length-1 ? 0: index<0 ? this.Allimages.length-1:index;
+                this.time = setTimeout(()=>{
+                    this.now++;
+                    this.imgChange(this.now);
+                },4000);
+            }
+        },
+    });
 
 </script>
 
