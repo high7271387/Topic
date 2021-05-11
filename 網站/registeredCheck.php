@@ -1,6 +1,6 @@
 <?php
     require_once('dbconnect.php');
-    require_once('strFilter.php');
+    // require_once('strFilter.php');
     date_default_timezone_set('Asia/Taipei');    
     if( $_SERVER['HTTP_REFERER'] == "" )
     {   
@@ -17,7 +17,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>註冊確認</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/fontset.css">
     <link rel="stylesheet" href="css/nav.css">
@@ -131,7 +131,7 @@
                                 $phone = $_REQUEST['phone'];
                                 $email = $_REQUEST['email'];
                                 $address = $_REQUEST['address'];
-                                $address = strFilter($address);
+                                // $address = strFilter($address);
                                 $date = date ("Y-m-d  H:i:s"); 
                                 $query = "INSERT INTO `user` (username, password, name , idNumber , phone, email, address, date) VALUES ('$username', '$password', '$name' , '$idNumber' , '$phone', '$email', '$address', '$date') ";
                                 $result = mysqli_query($connect,$query);

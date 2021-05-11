@@ -11,25 +11,30 @@
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="CSS/nav.css">
     <link rel="stylesheet" href="CSS/footer.css">
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.9.1/axios.js' integrity='sha512-Kg0CewqPNO/ziOJuCq5eyl3P/V6OLz/Lb1I2m+yKS3lHZcGVFN/KOew18rWP+kTsL7haYdaqGjwHQCZrN0heLQ==' crossorigin='anonymous'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.9/vue.js' integrity='sha512-o9SZrtqlGkpa7EF+dDrNjEdRFFYhymlrBzDKpolHNolxsyx0IcXAbEm9i1e8QpoiMgEdKZVtY8XiK1t8i6jVDA==' crossorigin='anonymous'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.9.1/axios.js'
+        integrity='sha512-Kg0CewqPNO/ziOJuCq5eyl3P/V6OLz/Lb1I2m+yKS3lHZcGVFN/KOew18rWP+kTsL7haYdaqGjwHQCZrN0heLQ=='
+        crossorigin='anonymous'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.9/vue.js'
+        integrity='sha512-o9SZrtqlGkpa7EF+dDrNjEdRFFYhymlrBzDKpolHNolxsyx0IcXAbEm9i1e8QpoiMgEdKZVtY8XiK1t8i6jVDA=='
+        crossorigin='anonymous'></script>
 
-    <title>Document</title>
+    <title>龍臣車業</title>
     <style>
         body {
             margin: 0px;
         }
 
 
-        #banner{
+        #banner {
             background: #000;
             display: flex;
             max-height: 1030px;
-            width:100%;
+            width: 100%;
             position: relative;
             overflow: hidden;
         }
-        #banner button{
+
+        #banner button {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -40,32 +45,39 @@
             cursor: pointer;
             transition: background 0.4s;
         }
-        #banner button:hover{
+
+        #banner button:hover {
             background-color: rgba(192, 192, 192, 0.41);
         }
-        #banner button:nth-child(1){
-            right:0;
+
+        #banner button:nth-child(1) {
+            right: 0;
         }
-        #banner button:nth-child(2){
-            left:0;
+
+        #banner button:nth-child(2) {
+            left: 0;
         }
-        #banner .imgContainer span{
+
+        #banner .imgContainer span {
             display: flex;
             flex-wrap: nowrap;
             margin-left: -100vw;
         }
-        #banner .imgContainer .imgList{
+
+        #banner .imgContainer .imgList {
             width: 100vw;
         }
 
-        #banner .imgContainer .imgList:last-child{
-            Visibility:hidden;
+        #banner .imgContainer .imgList:last-child {
+            Visibility: hidden;
         }
-        #banner .imgContainer .imgList img{
+
+        #banner .imgContainer .imgList img {
             max-width: 100%;
             height: auto;
         }
-        .bannerChange-move{
+
+        .bannerChange-move {
             transition: all 0.7s;
         }
 
@@ -90,14 +102,14 @@
         #newstitle {
             width: 100%;
             height: 50px;
-            
+
             border-bottom: 5px solid red;
             position: relative;
         }
 
         .newscontent {
             margin-top: 50px;
-            
+
             width: 100%;
             height: 200px;
 
@@ -107,7 +119,7 @@
         .newscontent img {
             width: 250px;
             height: 200px;
-            
+
         }
 
         #newstitle span {
@@ -134,11 +146,11 @@
 
         .newscontent img+div {
             width: calc(100% - 250px);
-            
+
             height: 200px;
         }
 
-        .newscontent  button {
+        .newscontent button {
             display: flex;
             padding: 5px 25px;
             background: #000;
@@ -148,7 +160,7 @@
             border-radius: 30px;
             cursor: pointer;
             transition: all 0.3s;
-            text-decoration:none;
+            text-decoration: none;
         }
 
         .newscontent .float-start>div {
@@ -165,28 +177,42 @@
             display: flex;
             width: 100%;
             height: 75%;
-            
+
         }
 
         @media screen and (max-width:576px) {
             nav {
                 background-color: rgba(0, 0, 0, 0.2);
             }
-            .newscontent img+div{
-                width:100%;
-           
+
+            .newscontent img+div {
+                width: 100%;
+
             }
-            .newscontent img{
+
+            .newscontent img {
                 width: 100%;
             }
-            #news .newscontent~.newscontent{
+
+            #news .newscontent~.newscontent {
                 margin-top: 200px;
             }
-            #newstitle span {
-            
-            font-size:28px;
-        }
 
+            #newstitle span {
+
+                font-size: 28px;
+
+            }
+
+            .RWDimg {
+                display: flex;
+                margin: 0 auto;
+            }
+
+            .RWDimg.float-start,
+            .RWDimg.float-end {
+                float: none !important;
+            }
         }
     </style>
 </head>
@@ -226,10 +252,12 @@
                     <span> 最新消息</span>
 
                 </div>
-                <div class="newscontent "  :class='classchange(index) '  v-for='(item,index) of resdata'>
+                <div class="newscontent " :class='classchange(index) ' v-for='(item,index) of resdata'>
                     <a :href="'newsContent.php?id='+item.id" class="float-start ">
-                        <img :src="item.Thumbnail" alt="" v-if='item.Thumbnail' style="width:250px; height:200px;" :class='classchange(index)'>
-                        <img src="image/Logo.jpg" alt="" v-else  style="width:250px; height:200px;" :class='classchange(index)'>
+                        <img :src="item.Thumbnail" alt="" v-if='item.Thumbnail' style="width:250px; height:200px;"
+                            :class='classchange(index)' class="RWDimg">
+                        <img src="image/Logo.jpg" alt="" v-else style="width:250px; height:200px;"
+                            :class='classchange(index)' class="RWDimg">
                         <div class="float-end ">
                             <div>
                                 {{item.content}}
@@ -240,7 +268,7 @@
                     </a>
                 </div>
             </div>
-            <a href=""><img id="contentimg" src="image/banner4.jpg" alt=""></a> 
+            <a href=""><img id="contentimg" src="image/banner4.jpg" alt=""></a>
         </div>
 
     </div>
@@ -265,72 +293,72 @@
         }
     }
     let vm = new Vue({
-            el:'#news',
-            data(){
-                return {
-                    resdata:null,
-                };
-            },
-            mounted(){
-                axios.post('news.php', JSON.stringify({dataNumber:4,dataindex:0, needNewsRows:false}))
-                    .then(res=>{
-                        this.resdata = res.data;
-                    })
+        el: '#news',
+        data() {
+            return {
+                resdata: null,
+            };
+        },
+        mounted() {
+            axios.post('news.php', JSON.stringify({ dataNumber: 4, dataindex: 0, needNewsRows: false }))
+                .then(res => {
+                    this.resdata = res.data;
+                })
 
-            },
-            methods:{
-                classchange(index){
-                    if(index%2 ==0){
-                        return 'float-start';
-                    }
-                    else{
-                        return 'float-end';
-                    }
+        },
+        methods: {
+            classchange(index) {
+                if (index % 2 == 0) {
+                    return 'float-start';
+                }
+                else {
+                    return 'float-end';
                 }
             }
-        });
+        }
+    });
 
     let banner = new Vue({
-        el:'#banner',
-        data(){
-            return{
-                now:0,
-                imgs:[{id:1,src:'image/banner1.jpg',href:'product.html?id=34'},
-                {id:2,src:'image/banner2.jpg',href:'product.html?id=7'},
-                {id:3,src:'image/banner3.jpg',href:'product.html?id=35'}],
-                time:null,
+        el: '#banner',
+        data() {
+            return {
+                now: 0,
+                imgs: [{ id: 1, src: 'image/banner1.jpg', href: 'product.html?id=34' },
+                { id: 2, src: 'image/banner2.jpg', href: 'product.html?id=7' },
+                { id: 3, src: 'image/banner3.jpg', href: 'product.html?id=35' }],
+                time: null,
             }
         },
-        mounted(){
-            this.time = setTimeout(()=>{
+        mounted() {
+            this.time = setTimeout(() => {
                 this.now++;
                 this.imgChange(this.now);
-            },4000);
+            }, 4000);
         },
-        computed:{
-            Allimages(){
+        computed: {
+            Allimages() {
                 let ary = [];
                 let total = this.imgs.length;
-                while(ary.length < 5){
+                while (ary.length < 5) {
                     let key = ary.length / total;
-                    for(let  i = 0;i<total;i++){
-                        ary.push({id:key+'-'+this.imgs[i].id, src:this.imgs[i].src,href:this.imgs[i].href});
+                    for (let i = 0; i < total; i++) {
+                        ary.push({ id: key + '-' + this.imgs[i].id, src: this.imgs[i].src, href: this.imgs[i].href });
                     }
                 }
                 return ary;
             },
-            showimg(){
-                return this.Allimages.slice(this.now).concat(this.Allimages.slice(0,this.now));
+            showimg() {
+                return this.Allimages.slice(this.now).concat(this.Allimages.slice(0, this.now));
             }
         },
-        methods:{
-            imgChange(index){
+        methods: {
+            imgChange(index) {
                 clearTimeout(this.time);
-                this.now =   index > this.Allimages.length-1 ? 0: index<0 ? this.Allimages.length-1:index;
-                this.time = setTimeout(()=>{
+                this.now = index > this.Allimages.length - 1 ? 0 : index < 0 ? this.Allimages.length - 1 : index;
+                this.time = setTimeout(() => {
                     this.now++;
                     this.imgChange(this.now);
-                },4000);
+                }, 4000);
             }
         },
     });
