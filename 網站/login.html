@@ -97,14 +97,22 @@
 
         .formbuttonarea a button,
         .formbuttonarea input {
-            background: none;
             color: white;
             padding: 0 50px;
             font-size: 1.2rem;
             font-weight: bold;
             border-radius: 29px;
+            text-decoration: none;
+            border: 2px solid rgb(235, 235, 235);
+            background: #000;
+            cursor: pointer;
+            margin: 0 10px;
         }
-
+        .formbuttonarea a button:hover,
+        .formbuttonarea input:hover {
+            background: rgb(235, 235, 235);
+            color: black;
+        }
         .formbuttonarea button:nth-child(2) {
             margin-left: 50px;
         }
@@ -166,7 +174,8 @@
                     </div>
                     <div class='formbuttonarea'>
                         <input type="submit" value="登入"></input>
-                        <a href="registered.html"><button type="button">註冊</button></a> 
+                        <a href="registered.html">
+                            <button type="button">註冊</button></a> 
                     </div>
                 </div>
             </form>
