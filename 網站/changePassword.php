@@ -114,10 +114,15 @@ if (isset($_REQUEST['oldPassword'])) {
         .formitem input[type='submit'] {
             padding: 10px 15px;
             cursor: pointer;
+            color: white;
+            box-sizing: border-box;
+            border-radius: 29px;
+            background: #000;
+            border: 2px solid rgb(235, 235, 235);
         }
 
         .formitem input[type='submit']:hover {
-            background-color: whitesmoke;
+            background: rgb(235, 235, 235);
             color: black;
         }
 
