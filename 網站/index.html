@@ -140,13 +140,12 @@
         }
 
         .newscontent a {
-            width: 100%;
-            height: 100%;
+         display: flex;
+         width: 102px;
         }
 
         .newscontent img+div {
             width: calc(100% - 250px);
-
             height: 200px;
         }
 
@@ -158,7 +157,6 @@
             box-sizing: border-box;
             border: 2px solid rgb(235, 235, 235);
             border-radius: 30px;
-            cursor: pointer;
             transition: all 0.3s;
             text-decoration: none;
         }
@@ -266,8 +264,8 @@
                         <div class="float-end ">
                             <div>
                                 {{item.content}}
-                            </div> <a :href="'newsContent.php?id='+item.id" class="">
-                                <button class="mx-auto mt-1">MORE</button> </a>
+                            </div> <a :href="'newsContent.php?id='+item.id" class="mx-auto">
+                                <button class="mx-auto mt-1">MORE</button></a>
                         </div>
 
                     </div>
