@@ -53,7 +53,7 @@
             }
             elseif($date2!=''){
                 $sql = "SELECT tracking_number, GROUP_CONCAT(p_color)p_color,GROUP_CONCAT(p_name)p_name,GROUP_CONCAT(p_price) p_price,date,status 
-                FROM orderdata WHERE WHERE (DATE_ADD(date,INTERVAL -1 DAY)) <= '$date2' AND username = '$username' GROUP BY tracking_number";
+                FROM orderdata  WHERE (DATE_ADD(date,INTERVAL -1 DAY)) <= '$date2' AND username = '$username' GROUP BY tracking_number";
                 $result = mysqli_query($connect,$sql);
                 if(mysqli_num_rows($result)>0){
                     while($row = mysqli_fetch_assoc($result)){
