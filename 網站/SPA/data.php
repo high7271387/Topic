@@ -1,8 +1,65 @@
 <?php
-    require_once('dbconnect.php');
-    require_once('strFilter.php');
+    header("Content-Type:text/html; charset=utf-8");
+    $connect = mysqli_connect("localhost","root","5168851688","store");
+    mysqli_query($connect ,"SET NAMES UTF8");
+    if (mysqli_connect_errno($connect)) 
+    { 
+        echo "連接資料庫失敗: " . mysqli_connect_error(); 
+    } 
     date_default_timezone_set('Asia/Taipei');    
     header("Content-Type:text/html; charset=utf-8");
+    function strFilter($str){
+        $str = str_replace('`', '', $str);
+        $str = str_replace('·', '', $str);
+        $str = str_replace('~', '', $str);
+        $str = str_replace('!', '', $str);
+        $str = str_replace('！', '', $str);
+        $str = str_replace('@', '', $str);
+        $str = str_replace('#', '', $str);
+        $str = str_replace('$', '', $str);
+        $str = str_replace('￥', '', $str);
+        $str = str_replace('%', '', $str);
+        $str = str_replace('^', '', $str);
+        $str = str_replace('……', '', $str);
+        $str = str_replace('&', '', $str);
+        $str = str_replace('*', '', $str);
+        $str = str_replace('(', '', $str);
+        $str = str_replace(')', '', $str);
+        $str = str_replace('（', '', $str);
+        $str = str_replace('）', '', $str);
+        $str = str_replace('-', '', $str);
+        $str = str_replace('_', '', $str);
+        $str = str_replace('——', '', $str);
+        $str = str_replace('+', '', $str);
+        $str = str_replace('=', '', $str);
+        $str = str_replace('|', '', $str);
+        $str = str_replace('\\', '', $str);
+        $str = str_replace('[', '', $str);
+        $str = str_replace(']', '', $str);
+        $str = str_replace('【', '', $str);
+        $str = str_replace('】', '', $str);
+        $str = str_replace('{', '', $str);
+        $str = str_replace('}', '', $str);
+        $str = str_replace(';', '', $str);
+        $str = str_replace('；', '', $str);
+        $str = str_replace(':', '', $str);
+        $str = str_replace('：', '', $str);
+        $str = str_replace('\'', '', $str);
+        $str = str_replace('"', '', $str);
+        $str = str_replace('“', '', $str);
+        $str = str_replace('”', '', $str);
+        $str = str_replace(',', '', $str);
+        $str = str_replace('<', '', $str);
+        $str = str_replace('>', '', $str);
+        $str = str_replace('《', '', $str);
+        $str = str_replace('》', '', $str);
+        $str = str_replace('.', '', $str);
+        $str = str_replace('/', '', $str);
+        $str = str_replace('、', '', $str);
+        $str = str_replace('?', '', $str);
+        $str = str_replace('？', '', $str);
+        return trim($str);
+      }
     $data = json_decode(file_get_contents("php://input"));
     if($data != ''){
         if(!is_array($data)){
@@ -197,6 +254,7 @@
                     $row2 = mysqli_fetch_assoc($result2);
                     $resdata[] = $row2['COUNT(*)'];
                 }
+                echo json_encode($resdata);
             }
             if($data->dataKey ==9){
                 $id = $data -> id;
@@ -345,6 +403,8 @@
                     echo json_encode(null);
                 }
             }
+
+
         }
         else{
             if($data[1] ==2){
